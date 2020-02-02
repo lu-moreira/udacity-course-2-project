@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { filterImageFromURL, LocalContext } from '../../util/util';
-import { deleteFilesMiddleware } from './image.middleware';
+import { deleteFilesMiddleware, validateImageUrlMiddleware } from './image.middleware';
 
 const router: Router = Router();
 
@@ -14,11 +14,8 @@ router.use(deleteFilesMiddleware)
 // Then, tries to recover the image and parse it
 // If anything is fine, this puts on Response.locals his path and response the image file
 // If something wrong happens, like a invalid image or could not GET the image will response a 500 error
-router.get('/', async (req: Request, res: Response) => {
+router.get('/', validateImageUrlMiddleware, async (req: Request, res: Response) => {
     let { image_url } = req.query;
-    if (!image_url) {
-        res.status(400).send({ "error": "Image Url invalid" });
-    }
 
     try {
         let filteredImagePath = await filterImageFromURL(image_url);
