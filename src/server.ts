@@ -8,6 +8,8 @@ import { IndexRouter } from './controllers/index.router';
   
   app.use(bodyParser.json());
 
+  // @TODO
+  // We are using the index router as a way to organize better the code and not let this file too long.
   app.use('/', IndexRouter)
 
   // Start the Server
