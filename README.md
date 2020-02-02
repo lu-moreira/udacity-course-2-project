@@ -1,7 +1,7 @@
 # Udagram Image Filtering Microservice
 
 Access Url: course-2-project-dev.us-east-2.elasticbeanstalk.com
-
+GitHub Link: https://github.com/lu-moreira/udacity-course-2-project
 EBS created screenshot is under the folder deployment_screenshots.
 
 ## Project Layoyt
